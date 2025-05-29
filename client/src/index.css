@@ -1,0 +1,317 @@
+@import "tailwindcss";
+
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Light mode colors */
+  --primary-light: #3b82f6; /* Blue-500 - More vibrant primary */
+  --secondary-light: #e5e7eb; /* Slate-500 - Balanced secondary */
+  --background-light: #ffffff; /* White - Clean background */
+  --surface-light: #f8fafc; /* Slate-50 - Subtle surface */
+  --surface-hover-light: #f1f5f9; /* Slate-100 - Subtle hover state for surface */
+  --text-primary-light: #1e293b; /* Slate-800 - Better contrast */
+  --text-secondary-light: #475569; /* Slate-600 - Readable secondary text */
+  --border-light: #e5e7eb; /* Gray-200 - Subtle borders */
+  --error-light: #f56565; /* red-500 - error text */
+
+  /* Modern button colors - Light theme */
+  --button-primary-light: #6366f1; /* Indigo-500 - Vibrant and eye-catching */
+  --button-primary-hover-light: #4f46e5; /* Indigo-600 - Deeper on hover */
+  --button-primary-active-light: #4338ca; /* Indigo-700 - Visible feedback when clicked */
+  --button-secondary-light: #94a3b8; /* Slate-400 - Balanced secondary */
+  --button-secondary-hover-light: #64748b; /* Slate-500 - Deeper on hover */
+  --button-secondary-active-light: #475569; /* Slate-600 - Active state */
+  --button-success-light: #10b981; /* Emerald-500 - Positive actions */
+  --button-success-hover-light: #059669; /* Emerald-600 - Hover state */
+  --button-danger-light: #d81c1c; /* Red-500 - Warning/delete actions */
+  --button-danger-hover-light: #b91111; /* Red-600 - Hover state */
+
+  /* Dark mode colors */
+  --primary-dark: #60a5fa; /* Blue-400 - Brighter for dark mode */
+  --secondary-dark: #94a3b8; /* Slate-400 - Visible secondary */
+  --background-dark: #0f172a; /* Slate-900 - Rich background */
+  --surface-dark: #1e293b; /* Slate-800 - Distinct surface */
+  --surface-hover-dark: #334155; /* Slate-700 - Distinct hover state for surface */
+  --text-primary-dark: #f8fafc; /* Slate-50 - High contrast text */
+  --text-secondary-dark: #cbd5e1; /* Slate-300 - Legible secondary text */
+  --border-dark: #334155; /* Gray-900 - Visible borders */
+  --error-dark: #f56565; /* red-500 - error text */
+
+  /* Modern button colors - Dark theme */
+  --button-primary-dark: #818cf8; /* Indigo-400 - Brighter for dark mode visibility */
+  --button-primary-hover-dark: #6366f1; /* Indigo-500 - Clear hover state */
+  --button-primary-active-dark: #4f46e5; /* Indigo-600 - Distinct active state */
+  --button-secondary-dark: #94a3b8; /* Slate-400 */
+  --button-secondary-hover-dark: #64748b; /* Slate-500 */
+  --button-secondary-active-dark: #475569; /* Slate-600 */
+  --button-success-dark: #34d399; /* Emerald-400 - More visible in dark mode */
+  --button-success-hover-dark: #10b981; /* Emerald-500 - Hover state */
+  --button-danger-dark: #d81c1c; /* Red-400 - More visible in dark mode */
+  --button-danger-hover-dark: #b91111; /* Red-500 - Hover state */
+
+  /* Default theme (Light mode) */
+  --primary: var(--primary-light);
+  --secondary: var(--secondary-light);
+  --background: var(--background-light);
+  --surface: var(--surface-light);
+  --surface-hover: var(--surface-hover-light);
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --border: var(--border-light);
+  --button-primary: var(--button-primary-light);
+  --button-primary-hover: var(--button-primary-hover-light);
+  --button-primary-active: var(--button-primary-active-light);
+  --button-secondary: var(--button-secondary-light);
+  --button-secondary-hover: var(--button-secondary-hover-light);
+  --button-secondary-active: var(--button-secondary-active-light);
+  --button-success: var(--button-success-light);
+  --button-success-hover: var(--button-success-hover-light);
+  --button-danger: var(--button-danger-light);
+  --button-danger-hover: var(--button-danger-hover-light);
+  --error-text: var(--error-light);
+}
+
+[data-theme="dark"] {
+  --primary: var(--primary-dark);
+  --secondary: var(--secondary-dark);
+  --background: var(--background-dark);
+  --surface: var(--surface-dark);
+  --surface-hover: var(--surface-hover-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --border: var(--border-dark);
+  --button-primary: var(--button-primary-dark);
+  --button-primary-hover: var(--button-primary-hover-dark);
+  --button-primary-active: var(--button-primary-active-dark);
+  --button-secondary: var(--button-secondary-dark);
+  --button-secondary-hover: var(--button-secondary-hover-dark);
+  --button-secondary-active: var(--button-secondary-active-dark);
+  --button-success: var(--button-success-dark);
+  --button-success-hover: var(--button-success-hover-dark);
+  --button-danger: var(--button-danger-dark);
+  --button-danger-hover: var(--button-danger-hover-dark);
+  --error-text: var(--error-light);
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+.backGroundColor {
+  background-color: var(--background);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+.bg-secondary {
+  background-color: var(--secondary);
+}
+.bg-surface {
+  background-color: var(--surface);
+}
+.bg-surface-hover:hover {
+  background-color: var(--surface-hover);
+}
+.bg-surface-active {
+  background-color: var(--surface-hover);
+}
+.text-primary {
+  color: var(--text-primary);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.border-color {
+  border-color: var(--border);
+}
+
+/* Modern button styles */
+.btn-primary {
+  background-color: var(--button-primary);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: var(--button-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:active {
+  background-color: var(--button-primary-active);
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: var(--button-secondary);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+  background-color: var(--button-secondary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:active {
+  background-color: var(--button-secondary-active);
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-success {
+  background-color: var(--button-success);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-success:hover {
+  background-color: var(--button-success-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-danger {
+  background-color: var(--button-danger);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-danger:hover {
+  background-color: var(--button-danger-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus styles for accessibility */
+.btn-primary:focus,
+.btn-secondary:focus,
+.btn-success:focus,
+.btn-danger:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.input-field {
+  transition: all 0.2s ease;
+}
+
+.input-field:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.input-field:focus {
+  outline: 1.5px solid #3b82f6;
+  outline-offset: 2px;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+  transition: all 0.2s ease;
+  transform: scale(0.98);
+}
+
+.error-color {
+  color: var(--error-text);
+}
+
+* {
+  transition: background-color 0.1s ease, color 0.1s ease,
+    border-color 0.1s ease;
+}
+
+/* Global scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px; /* Keep it consistent */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background);
+  border-radius: 50px; /* Match track for smooth appearance */
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--surface-hover);
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-primary);
+}
+
+/* Hide scrollbar class */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Show scrollbar on hover - uses same styling as global */
+.hover\:scrollbar-show:hover {
+  -ms-overflow-style: auto;
+  scrollbar-width: thin;
+}
+
+.hover\:scrollbar-show:hover::-webkit-scrollbar {
+  display: block;
+}
+
+@layer components {
+  /* Remove number input arrows for Chrome, Safari, Edge, Opera */
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Remove number input arrows for Firefox */
+  [type="number"] {
+    -moz-appearance: textfield;
+  }
+}
