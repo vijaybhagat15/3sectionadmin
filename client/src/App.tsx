@@ -7,7 +7,6 @@ import { ProtectedLayout } from "./Layout/ProtectedLayout";
 import { AuthLayout } from "./Layout/AuthLayout";
 import { Error404 } from "./pages/NotFound/Error404";
 import Unauthorized from "./pages/Auth/Unauthorized";
-import ResetPassword from "./pages/Auth/ForgotPassword";
 import Signup from "./pages/Auth/Signup";
 import Signin from "./pages/Auth/Signin";
 import ManageAdmins from "./pages/UserManagement/ManageAdmin";
@@ -19,6 +18,8 @@ import SecurityLogs from "./pages/SecurityAndBackup/SecurityLogs";
 import DataBackups from "./pages/SecurityAndBackup/DataBackups";
 import SecuritySettings from "./pages/SecurityAndBackup/SecuritySettings";
 import Dashboard from "./pages/Dashboard/Dashbord";
+import ResetPassword from "./pages/Auth/ResetPassword";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 
 function App() {
   const { isAuthenticated, user } = useAppSelector((state: RootState) => state?.auth);
@@ -39,8 +40,15 @@ function App() {
       children: [
         { path: "signin", element: <Signin /> },
         { path: "signup", element: <Signup /> },
-        { path: "reset", element: <ResetPassword /> },
+        { path: "forgot", element: <ForgotPassword /> },
+        // { path: "reset_password/:id/:token", element: <ResetPassword />},
+
       ],
+    },
+        // Move reset password outside of AuthLayout so it works without layout/auth context
+    {
+      path: "reset_password/:id/:token",
+      element: <ResetPassword />,
     },
     { path: "unauthorized", element: <Unauthorized /> },
     {

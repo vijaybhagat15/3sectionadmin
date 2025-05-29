@@ -1,3 +1,4 @@
+//server\Model\AuthModel\authUser.js
 import mongoose from "mongoose";
 
 const authUserSchema = new mongoose.Schema(
