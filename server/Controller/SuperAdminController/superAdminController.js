@@ -1,14 +1,13 @@
 import "dotenv/config";
 import { AuthUserModel } from "../../Model/AuthModel/authUser.js";
-import bcrypt from "bcrypt";
 import { generateToken } from "../../Utils/jwttoken.js";
 import { loginValidationSchema, registrationValidationSchema } from "../../validations/validationSchemas.js";
-import passwordForgetMiddleware from "../../Middleware/ForgetPasswordMiddleware.js";
-import passwordResetMiddleware from "../../Middleware/ResetPasswordMiddleware.js";
 import catchAsyncErrors from "../../Utils/catchAsyncErrors.js";
 import { ErrorHandler } from "../../Utils/errorhandler.js";
 import { logger } from "../../Utils/logger.js";
-
+import jwt from "jsonwebtoken";
+import nodemailer from "nodemailer";
+import bcrypt from "bcryptjs";
 const superadmin_secrate_key = process.env.SUPERADMIN_JWT_SECRET;
 
 /************************************************************************************
@@ -154,22 +153,54 @@ export const superAdminLogout = catchAsyncErrors(async (req, res) => {
 /************************************************************************************
  * @description Superadmin Forget Password
  ************************************************************************************/
-export const superAdminForgetpassword = catchAsyncErrors(
-  async (req, res, next) => {
-    logger.info("Superadmin forget password request received.", {
-      email: req.body.email,
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await AuthUserModel.findOne({ email });
+    if (!user) return res.status(404).json({ Status: "User not existed" });
+
+    const token = jwt.sign({ id: user._id }, process.env.SUPERADMIN_JWT_SECRET, { expiresIn: "1d" });
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
     });
-    passwordForgetMiddleware("superadmin")(req, res, next);
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Reset Password Link",
+      text: `http://localhost:5173/auth/reset_password/${user._id}/${token}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    return res.json({ Status: "Success" });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ Status: "Email failed", error });
   }
-);
+};
 
 /************************************************************************************
  * @description Superadmin Reset Password
  ************************************************************************************/
-export const superAdminResetpassword = catchAsyncErrors(async (req, res) => {
-  logger.info("Superadmin reset password request received.");
-  passwordResetMiddleware("superadmin")(req, res);
-});
+export const resetPassword = async (req, res) => {
+  const { id, token } = req.params;
+  const { password } = req.body;
+
+  try {
+    const decoded = jwt.verify(token, process.env.SUPERADMIN_JWT_SECRET);
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await AuthUserModel.findByIdAndUpdate(id, { password: hashedPassword });
+    return res.json({ Status: "Success" });
+  } catch (error) {
+    return res.status(400).json({ Status: "Error with token or password", error });
+  }
+};
 
 /************************************************************************************
  * @description get all users

@@ -41,15 +41,11 @@ function App() {
         { path: "signin", element: <Signin /> },
         { path: "signup", element: <Signup /> },
         { path: "forgot", element: <ForgotPassword /> },
-        // { path: "reset_password/:id/:token", element: <ResetPassword />},
+        { path: "reset_password/:id/:token", element: <ResetPassword />},
 
       ],
     },
-        // Move reset password outside of AuthLayout so it works without layout/auth context
-    {
-      path: "reset_password/:id/:token",
-      element: <ResetPassword />,
-    },
+
     { path: "unauthorized", element: <Unauthorized /> },
     {
       path: "superadmin",

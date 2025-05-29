@@ -1,22 +1,26 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios'
-
+import { RESET_PASSWORD } from "../../Utils/api";
 
 function ResetPassword() {
     const [password, setPassword] = useState()
     const navigate = useNavigate()
     const {id, token} = useParams()
+        const [successMessage, setSuccessMessage] = useState("");
+
 
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post(`http://localhost:8000/reset-password/${id}/${token}`, {password})
+        axios.post(`${RESET_PASSWORD}/${id}/${token}`, {password})
         .then(res => {
-            if(res.data.Status === "Success") {
-                navigate('/login')
-               
-            }
+      if (res.data.Status === "Success") {
+        setSuccessMessage("Password Reseted successfully to your email!");
+        setTimeout(() => {
+          navigate("/auth/signin");
+        }, 3000); // ⏳ 3 seconds delay
+      }
         }).catch(err => console.log(err))
     }
 
@@ -45,9 +49,13 @@ function ResetPassword() {
         Update
       </button>
     </form>
+        {successMessage && (
+  <div className="mb-4 p-2 text-green-700 bg-green-100 border border-green-400 rounded">
+    {successMessage}
+  </div>
+)}
   </div>
 </div>
-
     )
 }
 
