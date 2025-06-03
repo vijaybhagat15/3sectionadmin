@@ -3,7 +3,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API = '/api/v1/job';
+const API = 'http://localhost:8000/api/v1/job/';
 
 export interface Job {
   _id?: string;
@@ -46,7 +46,7 @@ const initialState: JobState = {
 export const fetchAllJobs = createAsyncThunk('jobs/fetchAll', async (_, thunkAPI) => {
   try {
     const res = await axios.get(`${API}/get-all-job`);
-    return res.data.jobs; // <-- FIXED
+    return res.data; // <-- FIXED
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
@@ -82,7 +82,6 @@ export const updateJob = createAsyncThunk(
     }
   }
 );
-
 export const deleteJob = createAsyncThunk('jobs/delete', async (id: string, thunkAPI) => {
   try {
     await axios.delete(`${API}/delete-job/${id}`);
