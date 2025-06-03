@@ -111,14 +111,10 @@ export const Header: React.FC = () => {
                 onClick={toggleSidebar}
                 className="flex items-center"
               >
-                <div className="h-8 w-8 rounded-full overflow-hidden mr-2">
-                  <img
-                    src="logo.png"
-                    alt="Logo"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <span className="font-semibold">Dashboard Menu</span>
+          <div className="flex items-center space-x-2 mx-auto">
+            <img src="/tablogo.png" alt="" className="max-w-[30px]" />
+            <h1 className="text-4xl">Sections</h1>
+          </div>
               </NavLink>
 
               {/* Close Button */}

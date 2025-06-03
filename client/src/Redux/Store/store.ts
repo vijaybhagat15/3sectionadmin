@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
 import authSlice from "../../Redux/Slice/authSlice"
-import newsReducer from "../../Redux/Slice/newsSlice";
 import schoolSlice from "../../Redux/Slice/schoolSlice";
 import superAdminSlice from "../../Redux/Slice/superAdminSlice";
 import websiteSlice from "../../Redux/Slice/websiteSlice";
@@ -11,20 +10,22 @@ import headerSlice from "../../Redux/Slice/headerSlice";
 import promotionSlice from "../../Redux/Slice/promotionSlice";
 import blogSlice from "../../Redux/Slice/blogSlice";
 import schoolBranchSlice from "../../Redux/Slice/schoolBranchSlice";
+import jobReducer from '../../Redux/Slice/jobSlice';
+
 export const store = configureStore({
     reducer: {
         auth: authSlice,
         school: schoolSlice,
         superadmin: superAdminSlice,
         schooladmin: schoolAdminSlice,
-        news: newsReducer,
         theme: themeSlice,
         header: headerSlice,
         footer: footerSlice,
         website: websiteSlice,
         promotion: promotionSlice,
         blog: blogSlice,
-        schoolBranch: schoolBranchSlice
+        schoolBranch: schoolBranchSlice,
+        jobs: jobReducer,
     }
 })
 

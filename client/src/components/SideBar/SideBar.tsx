@@ -13,12 +13,9 @@ const Sidebar = ({ toggleSidebar, userRole }: ToggleSidebarProps) => {
       {/*  Header Section */}
       <div className="hidden sticky top-0 z-10 md:flex justify-between items-center bg-surface border-b border-color shadow-sm">
         <NavLink to={getRolePath("/dashboard")} className="flex items-center group px-4 py-[11.5px]">
-          <div className="h-10 w-10 rounded-full overflow-hidden mr-2 border border-color transition-transform duration-200">
-            <img
-              src={logo}
-              alt="Logo"
-              className="h-full w-full object-cover"
-            />
+          <div className="flex items-center space-x-2 mx-auto">
+            <img src="/tablogo.png" alt="" className="max-w-[30px]" />
+            <h1 className="text-4xl">Sections</h1>
           </div>
         </NavLink>
 
@@ -29,6 +26,62 @@ const Sidebar = ({ toggleSidebar, userRole }: ToggleSidebarProps) => {
       {/* Scrollable Content */}
       <div className="flex-1 overflow-y-auto px-2 py-1 scrollbar-hide hover:scrollbar-show">
         {/* settings - Always show this for now */}
+        <NavLink
+          to={getRolePath("/jobs")}
+          className={`block p-2 text-sm rounded-md bg-surface-hover`}
+          onClick={toggleSidebar}
+        >
+          <Settings size={18} className="inline-block mr-2" /> Jobs
+        </NavLink>
+                {/* settings - Always show this for now */}
+        <NavLink
+          to={getRolePath("/add-job")}
+          className={`block p-2 text-sm rounded-md bg-surface-hover`}
+          onClick={toggleSidebar}
+        >
+          <Settings size={18} className="inline-block mr-2" /> add-job
+        </NavLink>
+                {/* settings - Always show this for now */}
+        <NavLink
+          to={getRolePath("/settings")}
+          className={`block p-2 text-sm rounded-md bg-surface-hover`}
+          onClick={toggleSidebar}
+        >
+          <Settings size={18} className="inline-block mr-2" /> Settings
+        </NavLink>
+                {/* settings - Always show this for now */}
+        <NavLink
+          to={getRolePath("/settings")}
+          className={`block p-2 text-sm rounded-md bg-surface-hover`}
+          onClick={toggleSidebar}
+        >
+          <Settings size={18} className="inline-block mr-2" /> Settings
+        </NavLink>
+                {/* settings - Always show this for now */}
+        <NavLink
+          to={getRolePath("/settings")}
+          className={`block p-2 text-sm rounded-md bg-surface-hover`}
+          onClick={toggleSidebar}
+        >
+          <Settings size={18} className="inline-block mr-2" /> Settings
+        </NavLink>
+                {/* settings - Always show this for now */}
+        <NavLink
+          to={getRolePath("/settings")}
+          className={`block p-2 text-sm rounded-md bg-surface-hover`}
+          onClick={toggleSidebar}
+        >
+          <Settings size={18} className="inline-block mr-2" /> Settings
+        </NavLink>
+                {/* settings - Always show this for now */}
+        <NavLink
+          to={getRolePath("/settings")}
+          className={`block p-2 text-sm rounded-md bg-surface-hover`}
+          onClick={toggleSidebar}
+        >
+          <Settings size={18} className="inline-block mr-2" /> Settings
+        </NavLink>
+                {/* settings - Always show this for now */}
         <NavLink
           to={getRolePath("/settings")}
           className={`block p-2 text-sm rounded-md bg-surface-hover`}

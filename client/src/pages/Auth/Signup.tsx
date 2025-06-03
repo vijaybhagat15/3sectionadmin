@@ -105,6 +105,10 @@ const Signup = () => {
           {" "}
           {/* UPDATED: Adjusted widths */}
           <div className="w-full shadow-2xl flex flex-col justify-center p-4">
+          <div className="flex items-center space-x-2 mx-auto">
+            <img src="/tablogo.png" alt="" className="max-w-[30px]" />
+            <h1 className="text-4xl">Sections</h1>
+          </div>
             <h2 className="text-2xl font-semibold text-center text-secondary mb-6">
               Create Account
             </h2>

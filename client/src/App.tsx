@@ -20,11 +20,16 @@ import SecuritySettings from "./pages/SecurityAndBackup/SecuritySettings";
 import Dashboard from "./pages/Dashboard/Dashbord";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import AdminJobsPage from "./pages/jobs/AdminJobsPage";
 
 function App() {
-  const { isAuthenticated, user } = useAppSelector((state: RootState) => state?.auth);
+const { isAuthenticated, user, checking } = useAppSelector((state: RootState) => state?.auth);
 
   useAuthCheck();
+
+    if (checking) {
+    return <div>Loading...</div>; 
+      }
 
   const router = createBrowserRouter([
     {
@@ -54,6 +59,8 @@ function App() {
       children: [
         // dashboard
         { path: "dashboard", element: <Dashboard /> },
+        //job
+        { path: "jobs", element: <AdminJobsPage /> },
 
         // user-management
         { path: "manage-admins", element: <ManageAdmins /> },

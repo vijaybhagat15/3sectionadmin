@@ -2,13 +2,11 @@ import { Eye, EyeOff, LoaderCircle } from "lucide-react";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
-// import sideImage from "../../assets/sideImage.webp";
 import signin from "../../assets/signin.jpg";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxSelector";
 import { RootState } from "../../Redux/Store/store";
 import { Helmet } from "react-helmet";
 import { superAdminLogin } from "../../Redux/Slice/authSlice";
-
 
 const Signin = () => {
   const { isLoading } = useAppSelector((state: RootState) => state?.auth);
@@ -72,25 +70,15 @@ const Signin = () => {
         {/* Left Side: Login Form */}
         <div className="flex justify-center items-center w-full md:w-1/2 lg:w-2/5 p-4 md:p-8">
           <div className="w-full shadow-2xl flex flex-col justify-center p-4">
+          <div className="flex items-center space-x-2 mx-auto">
+            <img src="/tablogo.png" alt="" className="max-w-[30px]" />
+            <h1 className="text-4xl">Sections</h1>
+          </div>
             <h2 className="text-2xl font-semibold text-center text-secondary mb-6">
               Sign In
             </h2>
 
             <form className="space-y-4 mt-8" onSubmit={handleSubmit}>
-              {/* User Type Selection */}
-              {/* <div className="flex justify-center space-x-4 mb-4">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="userType"
-                    value="superadmin"
-                    checked={userType === "superadmin"}
-                    onChange={handleUserTypeChange}
-                    className="form-radio text-blue-600 cursor-pointer"
-                  />
-                  <span className="ml-2 text-secondary">Super Admin</span>
-                </label>
-              </div> */}
 
               <div>
                 <label className="block text-secondary text-sm font-medium">

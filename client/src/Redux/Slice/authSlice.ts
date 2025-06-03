@@ -24,6 +24,7 @@ const initialState: InitialStateProps = {
   isAuthenticated: false,
   isLoading: false,
   error: null,
+  checking: true, // ✅ UPDATED: added `checking` flag
 };
 
 /************************************************************************************
@@ -132,7 +133,6 @@ export const superAdminUpdateProfile = createAsyncThunk<
  *  @description Helper for handling common reducer cases
  ************************************************************************************/
 const addCommonCases = (builder: any) => {
-  // Add common login/register success handling
   const handleAuthSuccess = (
     state: InitialStateProps,
     action: PayloadAction<UserApiResponse>
@@ -148,13 +148,11 @@ const addCommonCases = (builder: any) => {
     state.error = null;
   };
 
-  // Add common pending state handling
   const handlePending = (state: InitialStateProps) => {
     state.isLoading = true;
     state.error = null;
   };
 
-  // Add common error handling
   const handleRejected = (
     state: InitialStateProps,
     action: PayloadAction<any>
@@ -173,13 +171,9 @@ const addCommonCases = (builder: any) => {
       .addCase(thunk.rejected, handleRejected);
   };
 
-  // Login cases for both admin types
   addStatusHandlers(superAdminLogin);
-
-  // Register cases for both admin types
   addStatusHandlers(superAdminRegister);
 
-  // Logout cases for both admin types
   const handleLogoutSuccess = (
     state: InitialStateProps,
     action: PayloadAction<UserApiResponse>
@@ -197,7 +191,6 @@ const addCommonCases = (builder: any) => {
 
   addStatusHandlers(superAdminLogout, handleLogoutSuccess);
 
-  // Update profile cases for both admin types
   const handleProfileUpdateSuccess = (
     state: InitialStateProps,
     action: PayloadAction<UserApiResponse>
@@ -226,11 +219,14 @@ export const authSlice = createSlice({
     },
     logout: () => {
       cookieManager.clearAuthCookies();
-      return { ...initialState };
+      return { ...initialState, checking: false }; // ✅ UPDATED: maintain `checking: false` on logout
     },
     persistLogin: (state, action: PayloadAction<UserType | null>) => {
       state.user = action.payload;
       state.isAuthenticated = !!action.payload;
+    },
+    setChecking: (state, action: PayloadAction<boolean>) => {
+      state.checking = action.payload; // ✅ NEW: set `checking` to true or false
     },
   },
   extraReducers: (builder) => {
@@ -238,9 +234,8 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login, logout, persistLogin } = authSlice.actions;
+export const { login, logout, persistLogin, setChecking } = authSlice.actions; // ✅ UPDATED: include `setChecking`
 
-// Selector to Access Auth State
 export const selectAuth = (state: RootState) => state.auth;
 
 export default authSlice.reducer;

@@ -1,27 +1,30 @@
-// server\index.js
+// server/index.js
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import cookieParser from "cookie-parser";
-import Database from "../server/Db/Database.js";
-import errorMiddleware from "./Middleware/error.js";
-import rateLimit from "express-rate-limit";
-import { logRequest, logger } from "./Utils/logger.js";
+import dotenv from "dotenv";
 import session from "express-session";
+import rateLimit from "express-rate-limit";
+
+import Database from "./Db/Database.js";
+import errorMiddleware from "./Middleware/error.js";
+import { logRequest, logger } from "./Utils/logger.js";
 import { RedisStore } from "connect-redis";
 import redisClient from "./config/redis.js";
-import dotenv from "dotenv";
 import securityConfig from "./config/security.js";
-import { AuthUserModel } from "./Model/AuthModel/authUser.js";
-import jwt from "jsonwebtoken";
-import nodemailer from "nodemailer";
-import bcrypt from "bcryptjs";
 
-// importing base routes
+// 🔹 Import routes
+import jobRouter from "./Routes/jobRoutes/jobRouter.js";
 import superadminRouter from "./Routes/SuperAdmin/superAdminRoutes.js";
 import checkAuthRouter from "./Routes/CheckAuth/checkAuth.js";
 
+dotenv.config();
+
+const app = express();
 const PORT = process.env.PORT || 8000;
+
+// 🔹 CORS Configuration
 const corsOptions = {
   origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5176"],
   credentials: true,
@@ -29,13 +32,15 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-dotenv.config();
-
-const app = express();
-app.use(express.json());
+// 🔹 Middleware
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
+app.use(cors(corsOptions));
+app.use(cookieParser());
 securityConfig(app);
+app.use(logRequest);
 
-// 🔹 Redis Session Store
+// 🔹 Redis Session
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
@@ -46,31 +51,7 @@ app.use(
   })
 );
 
-
-// ✅ Increased Payload Size for Large Images
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
-app.use(cors(corsOptions));
-app.use(cookieParser());
-app.use(errorMiddleware);
-app.use(logRequest);
-
-// db connections
-Database();
-
-// api routes
-app.use("/api/v1/superadmin", superadminRouter);
-app.use("/api/v1/auth", checkAuthRouter);
-
-
-
-app.use((err, req, res, next) => {
-  return res.status(500).json({
-    success: false,
-    message: err.message,
-  });
-});
-
+// 🔹 Rate Limiter
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -79,24 +60,37 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// server listening
-app.listen(PORT, (err) => {
-  if (err) console.log(err.message);
-  console.log(`Server is up and running on port ${PORT}`);
+// 🔹 Connect to DB
+Database();
+
+// 🔹 Routes
+app.use("/api/v1/superadmin", superadminRouter);
+app.use("/api/v1/auth", checkAuthRouter);
+app.use("/api/v1/job", jobRouter);
+
+// 🔹 Error Handling Middleware
+app.use(errorMiddleware);
+
+// 🔹 404 Fallback Route
+app.use("/*", (req, res) => {
+  return res.status(404).json({
+    success: false,
+    message: "Path not found!",
+  });
 });
+
+// 🔹 Global Error Handlers
 process.on("uncaughtException", (err) => {
   logger.error("Uncaught Exception:", { message: err.message, stack: err.stack });
-  process.exit(1); // Optional: Exit process
+  process.exit(1);
 });
 
 process.on("unhandledRejection", (reason, promise) => {
   logger.error("Unhandled Promise Rejection:", { reason, promise });
 });
 
-// default route
-app.use("/*", (req, res) => {
-  return res.status(404).json({
-    success: false,
-    message: "path not found!!",
-  });
+// 🔹 Start Server
+app.listen(PORT, (err) => {
+  if (err) console.log(err.message);
+  console.log(`✅ Server is running on port ${PORT}`);
 });

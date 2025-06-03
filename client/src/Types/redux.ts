@@ -1,10 +1,11 @@
 export type UserRole = "superadmin" | null;
 
 export interface InitialStateProps {
-    user: UserType | null,
-    isAuthenticated: boolean,
-    isLoading: boolean,
-    error: boolean | null | string
+  user: UserType | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  error: string | null;
+  checking: boolean; // ✅ NEW
 }
 
 export interface UserType {
