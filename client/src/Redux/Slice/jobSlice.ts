@@ -1,4 +1,5 @@
 // redux/slices/jobSlice.ts
+import { requestOptions } from '../../Utils/api'; 
 
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -64,18 +65,16 @@ export const fetchJobById = createAsyncThunk('jobs/fetchById', async (id: string
 
 export const addJob = createAsyncThunk('jobs/add', async (jobData: Job, thunkAPI) => {
   try {
-    const res = await axios.post(`${API}/add-job`, jobData);
+    const res = await axios.post(`${API}/add-job`, jobData, requestOptions);
     return res.data.job;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
 
-export const updateJob = createAsyncThunk(
-  'jobs/update',
-  async ({ id, jobData }: { id: string; jobData: Partial<Job> }, thunkAPI) => {
+export const updateJob = createAsyncThunk( 'jobs/update', async ({ id, jobData }: { id: string; jobData: Partial<Job> }, thunkAPI) => {
     try {
-      const res = await axios.put(`${API}/update-job/${id}`, jobData);
+      const res = await axios.put(`${API}/update-job/${id}`, jobData, requestOptions);
       return res.data.job;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -84,7 +83,7 @@ export const updateJob = createAsyncThunk(
 );
 export const deleteJob = createAsyncThunk('jobs/delete', async (id: string, thunkAPI) => {
   try {
-    await axios.delete(`${API}/delete-job/${id}`);
+    await axios.delete(`${API}/delete-job/${id}`,requestOptions);
     return id;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response.data.message);

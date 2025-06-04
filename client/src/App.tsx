@@ -9,7 +9,6 @@ import { Error404 } from "./pages/NotFound/Error404";
 import Unauthorized from "./pages/Auth/Unauthorized";
 import Signup from "./pages/Auth/Signup";
 import Signin from "./pages/Auth/Signin";
-import ManageAdmins from "./pages/UserManagement/ManageAdmin";
 import PermissionsPage from "./pages/UserManagement/Permissions";
 import RootLayout from "./Layout/RootLayout";
 import AuditLogs from "./pages/UserManagement/AuditLogs";
@@ -63,7 +62,6 @@ const { isAuthenticated, user, checking } = useAppSelector((state: RootState) =>
         { path: "jobs", element: <AdminJobsPage /> },
 
         // user-management
-        { path: "manage-admins", element: <ManageAdmins /> },
         { path: "permissions", element: <PermissionsPage /> },
         { path: "audit-logs", element: <AuditLogs /> },
 

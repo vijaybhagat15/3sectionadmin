@@ -130,7 +130,7 @@ const AdminJobsPage: React.FC = () => {
 console.log(jobs);
 
   return (
-    <section className="relative p-6 text-primary bg-surface rounded-lg">
+<section className="relative p-3 text-primary bg-surface rounded-lg md:max-w-5xl mx-auto overflow-x-auto">
       <Helmet>
         <title>Job Management System</title>
         <meta
@@ -231,7 +231,7 @@ console.log(jobs);
                   <td className="p-3 border border-color">{job.education}</td>
                   <td className="p-3 border border-color">
                     {job.skills?.map((skill) => (
-                      <span className="inline-block bg-gray-200 text-sm rounded px-2 py-1 mr-1" key={skill}>
+                      <span className="inline-block  text-sm rounded px-2 py-1 mr-1" key={skill}>
                         {skill}
                       </span>
                     )) || "—"}

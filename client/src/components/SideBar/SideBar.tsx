@@ -39,7 +39,15 @@ const Sidebar = ({ toggleSidebar, userRole }: ToggleSidebarProps) => {
           className={`block p-2 text-sm rounded-md bg-surface-hover`}
           onClick={toggleSidebar}
         >
-          <Settings size={18} className="inline-block mr-2" /> add-job
+          <Settings size={18} className="inline-block mr-2" /> Our Sub Brands
+        </NavLink>
+                {/* settings - Always show this for now */}
+        <NavLink
+          to={getRolePath("/settings")}
+          className={`block p-2 text-sm rounded-md bg-surface-hover`}
+          onClick={toggleSidebar}
+        >
+          <Settings size={18} className="inline-block mr-2" /> Our Partners
         </NavLink>
                 {/* settings - Always show this for now */}
         <NavLink
@@ -49,38 +57,7 @@ const Sidebar = ({ toggleSidebar, userRole }: ToggleSidebarProps) => {
         >
           <Settings size={18} className="inline-block mr-2" /> Settings
         </NavLink>
-                {/* settings - Always show this for now */}
-        <NavLink
-          to={getRolePath("/settings")}
-          className={`block p-2 text-sm rounded-md bg-surface-hover`}
-          onClick={toggleSidebar}
-        >
-          <Settings size={18} className="inline-block mr-2" /> Settings
-        </NavLink>
-                {/* settings - Always show this for now */}
-        <NavLink
-          to={getRolePath("/settings")}
-          className={`block p-2 text-sm rounded-md bg-surface-hover`}
-          onClick={toggleSidebar}
-        >
-          <Settings size={18} className="inline-block mr-2" /> Settings
-        </NavLink>
-                {/* settings - Always show this for now */}
-        <NavLink
-          to={getRolePath("/settings")}
-          className={`block p-2 text-sm rounded-md bg-surface-hover`}
-          onClick={toggleSidebar}
-        >
-          <Settings size={18} className="inline-block mr-2" /> Settings
-        </NavLink>
-                {/* settings - Always show this for now */}
-        <NavLink
-          to={getRolePath("/settings")}
-          className={`block p-2 text-sm rounded-md bg-surface-hover`}
-          onClick={toggleSidebar}
-        >
-          <Settings size={18} className="inline-block mr-2" /> Settings
-        </NavLink>
+
                 {/* settings - Always show this for now */}
         <NavLink
           to={getRolePath("/settings")}

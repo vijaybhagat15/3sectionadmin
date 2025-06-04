@@ -231,49 +231,57 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
 {/* Role */}
 <div>
   <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Role</label>
-  <input type="text" value={role} onChange={(e) => setRole(e.target.value)} className="input-field" />
+  <input type="text" value={role} onChange={(e) => setRole(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+ />
 </div>
 
 {/* Pay Amount */}
 <div>
   <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Pay Amount</label>
-  <input type="text" value={payAmount} onChange={(e) => setPayAmount(e.target.value)} className="input-field" />
+  <input type="text" value={payAmount} onChange={(e) => setPayAmount(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+ />
 </div>
 
 {/* Timing */}
 <div>
   <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Timing</label>
-  <input type="text" value={timing} onChange={(e) => setTiming(e.target.value)} className="input-field" />
+  <input type="text" value={timing} onChange={(e) => setTiming(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+ />
 </div>
 
 {/* Experience Required */}
 <div>
   <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Experience Required</label>
-  <input type="text" value={experienceRequired} onChange={(e) => setExperienceRequired(e.target.value)} className="input-field" />
+  <input type="text" value={experienceRequired} onChange={(e) => setExperienceRequired(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+ />
 </div>
 
 {/* Location */}
 <div>
   <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Location *</label>
-  <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required className="input-field" />
+  <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+ />
 </div>
 
 {/* Department */}
 <div>
   <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Department</label>
-  <input type="text" value={department} onChange={(e) => setDepartment(e.target.value)} className="input-field" />
+  <input type="text" value={department} onChange={(e) => setDepartment(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+ />
 </div>
 
 {/* Employment Type */}
 <div>
   <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Employment Type</label>
-  <input type="text" value={employment_type} onChange={(e) => setEmploymentType(e.target.value)} className="input-field" />
+  <input type="text" value={employment_type} onChange={(e) => setEmploymentType(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+ />
 </div>
 
 {/* Education */}
 <div>
   <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Education</label>
-  <input type="text" value={education} onChange={(e) => setEducation(e.target.value)} className="input-field" />
+  <input type="text" value={education} onChange={(e) => setEducation(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+ />
 </div>
 
 {/* Skills */}
@@ -286,7 +294,8 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
       setSkillsInput(e.target.value);
       setSkills(e.target.value.split(",").map(s => s.trim()).filter(Boolean));
     }}
-    className="input-field"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+
   />
 </div>
 
@@ -298,7 +307,8 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
     min={1}
     value={open_positions}
     onChange={(e) => setOpenPositions(Number(e.target.value))}
-    className="input-field"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+
   />
 </div>
 
