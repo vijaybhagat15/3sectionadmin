@@ -30,7 +30,7 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
   const [department, setDepartment] = useState(existingPost?.department || "");
   const [employment_type, setEmploymentType] = useState(existingPost?.employment_type || "");
   const [education, setEducation] = useState(existingPost?.education || "");
-  const [skills, setSkills] = useState<string[]>(existingPost?.skills || []);
+  const [skills, setSkills] = useState<string[]>(existingPost?.skills || "");
   const [skillsInput, setSkillsInput] = useState("");
   const [open_positions, setOpenPositions] = useState(existingPost?.open_positions || 1);
 
@@ -38,6 +38,43 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+useEffect(() => {
+  if (existingPost) {
+    setJobTitle(existingPost.jobTitle || "");
+    setCompanyName(existingPost.company_name || "");
+    setJobDescription(existingPost.jobDescription || "");
+    setCompanyLogo(existingPost.company_logo || "");
+    setPayAmount(existingPost.payAmount || "");
+    setTiming(existingPost.timing || "");
+    setExperienceRequired(existingPost.experienceRequired || "");
+    setRole(existingPost.role || "");
+    setLocation(existingPost.location || "");
+    setDepartment(existingPost.department || "");
+    setEmploymentType(existingPost.employment_type || "");
+    setEducation(existingPost.education || "");
+    setSkills(existingPost.skills || []);
+    setSkillsInput((existingPost.skills || []).join(", "));
+    setOpenPositions(existingPost.open_positions || 1);
+  } else {
+    setJobTitle("");
+    setCompanyName("");
+    setJobDescription("");
+    setCompanyLogo("");
+    setPayAmount("");
+    setTiming("");
+    setExperienceRequired("");
+    setRole("");
+    setLocation("");
+    setDepartment("");
+    setEmploymentType("");
+    setEducation("");
+    setSkills([]);
+    setSkillsInput("");
+    setOpenPositions(1);
+  }
+}, [existingPost]);
+
 
   useEffect(() => {
     setCharacterCount(jobDescription.length);

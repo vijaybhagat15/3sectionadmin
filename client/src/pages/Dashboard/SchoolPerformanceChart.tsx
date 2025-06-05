@@ -180,7 +180,7 @@ export default function SchoolPerformanceChart(): JSX.Element {
 
   return (
     <div className="bg-surface p-4 rounded-xl shadow-md">
-      <h3 className="font-medium mb-4">School Performance</h3>
+      <h3 className="font-medium mb-4">Website  Performance</h3>
       <div className="h-64 mb-4">
         <canvas ref={chartRef} />
       </div>

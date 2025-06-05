@@ -42,6 +42,7 @@ const AdminJobsPage: React.FC = () => {
         });
       }
     };
+console.log("Editing job data:", editingJob);
 
     fetchData();
     dispatch(clearJobState());
@@ -230,11 +231,7 @@ console.log(jobs);
                   <td className="p-3 border border-color">{job.role}</td>
                   <td className="p-3 border border-color">{job.education}</td>
                   <td className="p-3 border border-color">
-                    {job.skills?.map((skill) => (
-                      <span className="inline-block  text-sm rounded px-2 py-1 mr-1" key={skill}>
-                        {skill}
-                      </span>
-                    )) || "—"}
+                    {job.skills}
                   </td>
                   <td className="p-3 border border-color">{job.open_positions ?? "—"}</td>
                   <td className="p-3 flex justify-center items-center gap-2">
@@ -259,7 +256,8 @@ console.log(jobs);
       )}
 
       {isFormOpen && (
-        <JobForm existingJob={editingJob} onClose={handleFormClose} />
+        
+<JobForm existingPost={editingJob} onClose={handleFormClose} />
       )}
     </section>
   );
