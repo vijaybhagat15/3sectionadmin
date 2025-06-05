@@ -16,6 +16,8 @@ import securityConfig from "./config/security.js";
 
 // 🔹 Import routes
 import jobRouter from "./Routes/jobRoutes/jobRouter.js";
+import subbrandRouter from "./Routes/SubBrandRoutes/subbrandRouter.js";
+import partnerRouter from "./Routes/partnerRoutes/partnerRoutes.js";
 import superadminRouter from "./Routes/SuperAdmin/superAdminRoutes.js";
 import checkAuthRouter from "./Routes/CheckAuth/checkAuth.js";
 
@@ -67,6 +69,8 @@ Database();
 app.use("/api/v1/superadmin", superadminRouter);
 app.use("/api/v1/auth", checkAuthRouter);
 app.use("/api/v1/job", jobRouter);
+app.use("/api/v1/subbrand", subbrandRouter);
+app.use("/api/v1/partner", partnerRouter);
 
 // 🔹 Error Handling Middleware
 app.use(errorMiddleware);

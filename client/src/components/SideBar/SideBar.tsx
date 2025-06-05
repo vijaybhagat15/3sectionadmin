@@ -1,7 +1,5 @@
 import { NavLink } from "react-router-dom";
 import {Settings} from "lucide-react";
-import logo from "../../../public/logo.png"
-
 import { ToggleSidebarProps } from "../../Types/sidebar";
 
 const Sidebar = ({ toggleSidebar, userRole }: ToggleSidebarProps) => {
@@ -35,7 +33,7 @@ const Sidebar = ({ toggleSidebar, userRole }: ToggleSidebarProps) => {
         </NavLink>
                 {/* settings - Always show this for now */}
         <NavLink
-          to={getRolePath("/add-job")}
+          to={getRolePath("/subbrand")}
           className={`block p-2 text-sm rounded-md bg-surface-hover`}
           onClick={toggleSidebar}
         >
@@ -43,28 +41,11 @@ const Sidebar = ({ toggleSidebar, userRole }: ToggleSidebarProps) => {
         </NavLink>
                 {/* settings - Always show this for now */}
         <NavLink
-          to={getRolePath("/settings")}
+          to={getRolePath("/partner")}
           className={`block p-2 text-sm rounded-md bg-surface-hover`}
           onClick={toggleSidebar}
         >
           <Settings size={18} className="inline-block mr-2" /> Our Partners
-        </NavLink>
-                {/* settings - Always show this for now */}
-        <NavLink
-          to={getRolePath("/settings")}
-          className={`block p-2 text-sm rounded-md bg-surface-hover`}
-          onClick={toggleSidebar}
-        >
-          <Settings size={18} className="inline-block mr-2" /> Settings
-        </NavLink>
-
-                {/* settings - Always show this for now */}
-        <NavLink
-          to={getRolePath("/settings")}
-          className={`block p-2 text-sm rounded-md bg-surface-hover`}
-          onClick={toggleSidebar}
-        >
-          <Settings size={18} className="inline-block mr-2" /> Settings
         </NavLink>
       </div>
     </section>

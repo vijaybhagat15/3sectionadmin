@@ -151,12 +151,12 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
     <meta name="description" content="Create or edit a job posting" />
   </Helmet>
   
-  <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative shadow-xl transition-all duration-300">
-    <button onClick={() => onClose()} className="absolute top-3 right-3 text-gray-500 hover:text-red-500 text-xl">
+  <div className="bg-surface text-primary p-6 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative shadow-xl transition-all duration-300">
+    <button onClick={() => onClose()} className="absolute top-3 right-3  hover:text-red-500 text-xl">
       ✖
     </button>
 
-    <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
+    <h2 className="text-2xl font-bold mb-6 text-center ">
       {existingPost ? "Edit Job" : "Post a Job"}
     </h2>
 
@@ -166,7 +166,7 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
 
       {/* Company Logo Upload */}
       <div>
-        <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Company Logo *</label>
+        <label className="block font-semibold mb-1 ">Company Logo *</label>
         <div
           className={`border-2 border-dashed rounded-xl flex items-center justify-center text-center p-6 transition-all ${
             isDragging ? "border-blue-500 bg-blue-50" : "border-gray-300"
@@ -194,99 +194,99 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
 
       {/* Job Title */}
       <div>
-        <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Job Title *</label>
+        <label className="block font-semibold mb-1 ">Job Title *</label>
         <input
           type="text"
           value={jobTitle}
           onChange={(e) => setJobTitle(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
           required
         />
       </div>
 
       {/* Company Name */}
       <div>
-        <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Company *</label>
+        <label className="block font-semibold mb-1 ">Company *</label>
         <input
           type="text"
           value={company_name}
           onChange={(e) => setCompanyName(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
           required
         />
       </div>
 
       {/* Job Description */}
       <div>
-        <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Job Description *</label>
+        <label className="block font-semibold mb-1 ">Job Description *</label>
         <textarea
           value={jobDescription}
           onChange={(e) => setJobDescription(e.target.value)}
           rows={6}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
           required
         />
-        <div className="text-sm text-right text-gray-500 dark:text-gray-400">{characterCount} characters</div>
+        <div className="text-sm text-right  dark:text-gray-400">{characterCount} characters</div>
       </div>
 {/* Role */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Role</label>
-  <input type="text" value={role} onChange={(e) => setRole(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+  <label className="block font-semibold mb-1 ">Role</label>
+  <input type="text" value={role} onChange={(e) => setRole(e.target.value)}           className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
  />
 </div>
 
 {/* Pay Amount */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Pay Amount</label>
-  <input type="text" value={payAmount} onChange={(e) => setPayAmount(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+  <label className="block font-semibold mb-1 ">Pay Amount</label>
+  <input type="text" value={payAmount} onChange={(e) => setPayAmount(e.target.value)}           className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
  />
 </div>
 
 {/* Timing */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Timing</label>
-  <input type="text" value={timing} onChange={(e) => setTiming(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+  <label className="block font-semibold mb-1 ">Timing</label>
+  <input type="text" value={timing} onChange={(e) => setTiming(e.target.value)}           className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
  />
 </div>
 
 {/* Experience Required */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Experience Required</label>
-  <input type="text" value={experienceRequired} onChange={(e) => setExperienceRequired(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+  <label className="block font-semibold mb-1 ">Experience Required</label>
+  <input type="text" value={experienceRequired} onChange={(e) => setExperienceRequired(e.target.value)}           className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
  />
 </div>
 
 {/* Location */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Location *</label>
-  <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+  <label className="block font-semibold mb-1 ">Location *</label>
+  <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required           className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
  />
 </div>
 
 {/* Department */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Department</label>
-  <input type="text" value={department} onChange={(e) => setDepartment(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+  <label className="block font-semibold mb-1 ">Department</label>
+  <input type="text" value={department} onChange={(e) => setDepartment(e.target.value)}           className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
  />
 </div>
 
 {/* Employment Type */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Employment Type</label>
-  <input type="text" value={employment_type} onChange={(e) => setEmploymentType(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+  <label className="block font-semibold mb-1 ">Employment Type</label>
+  <input type="text" value={employment_type} onChange={(e) => setEmploymentType(e.target.value)}           className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
  />
 </div>
 
 {/* Education */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Education</label>
-  <input type="text" value={education} onChange={(e) => setEducation(e.target.value)}           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+  <label className="block font-semibold mb-1 ">Education</label>
+  <input type="text" value={education} onChange={(e) => setEducation(e.target.value)}           className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
  />
 </div>
 
 {/* Skills */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Skills (comma separated)</label>
+  <label className="block font-semibold mb-1 ">Skills (comma separated)</label>
   <input
     type="text"
     value={skillsInput}
@@ -294,20 +294,20 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
       setSkillsInput(e.target.value);
       setSkills(e.target.value.split(",").map(s => s.trim()).filter(Boolean));
     }}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
 
   />
 </div>
 
 {/* Open Positions */}
 <div>
-  <label className="block font-semibold mb-1 text-gray-700 dark:text-gray-200">Open Positions</label>
+  <label className="block font-semibold mb-1 ">Open Positions</label>
   <input
     type="number"
     min={1}
     value={open_positions}
     onChange={(e) => setOpenPositions(Number(e.target.value))}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
 
   />
 </div>
@@ -317,7 +317,7 @@ const JobForm: React.FC<JobFormProps> = ({ existingPost, onClose }) => {
         <button
           type="button"
           onClick={() => onClose()}
-          className="px-4 py-2 border border-gray-400 dark:border-gray-500 text-gray-800 dark:text-gray-100 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600"
+          className="px-4 py-2 border rounded-md hover:bg-gray-100 "
         >
           Cancel
         </button>

@@ -20,7 +20,8 @@ import Dashboard from "./pages/Dashboard/Dashbord";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import AdminJobsPage from "./pages/jobs/AdminJobsPage";
-
+import AdminSubBrandPage from "./pages/SubBrand/AdminSubBrandPage";
+import AdminPartnerPage from "./pages/partners/AdminPartnerPage";
 function App() {
 const { isAuthenticated, user, checking } = useAppSelector((state: RootState) => state?.auth);
 
@@ -60,6 +61,9 @@ const { isAuthenticated, user, checking } = useAppSelector((state: RootState) =>
         { path: "dashboard", element: <Dashboard /> },
         //job
         { path: "jobs", element: <AdminJobsPage /> },
+        { path: "subbrand", element: <AdminSubBrandPage /> },
+        { path: "partner", element: <AdminPartnerPage /> },
+
 
         // user-management
         { path: "permissions", element: <PermissionsPage /> },
